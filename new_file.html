@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>唯品会</title>
+		<script src="js/swipe.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var meta = document.createElement('meta');
+			meta.name = 'viewport';
+			var i = window.devicePixelRatio>1?1/window.devicePixelRatio:1;
+			meta.content = 'width=device-width,user-scalable=no,initial-scale='+i+',maximum-scale='+i+',minimum-scale='+i;
+			document.head.appendChild(meta);
+		</script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding:0;
+			}
+			.header{
+				width:100%;
+				height:5.478rem;
+				position: relative;
+				box-sizing: border-box;
+				overflow: hidden;
+			}
+			.left img{
+				width:5.5rem;
+				height:5.5rem;
+				padding: 0rem .5rem 0rem .5rem;
+			}
+			.center{
+				width:12.18rem;
+				height:3.125rem;
+				font-size:3.4rem;
+				position: absolute;
+				top:0.3rem;
+				left:14rem;
+				color: #f72f9a;
+			}
+			.right img{
+				width:3.375rem;
+				height:3.375rem;
+				position: absolute;
+				top:1.5rem;
+				left:35rem;
+			}
+			.nav{
+				width: 100%;
+				height:7rem;
+				background:#39424b;
+			}
+			 .nav li{
+			 	width:7.9rem;
+			 	height:4.687rem;
+				list-style-type:none;
+				float: left;
+				border-left:1px solid #666;
+				text-align: center;
+				line-height:4.687rem;
+				margin-top:1rem;
+			}
+			li{
+				list-style: none;
+				float: left;
+			}
+			a{
+				text-decoration: none;
+				color: #fff;
+				font-size:1.8rem;
+			}
+			.banner{
+				width:100%;
+				height:20.875rem;
+				overflow:hidden;
+				position:relative;			
+			}
+			.list{
+				width:400%;
+				height:20.875rem;
+				-webkit-transform: translateX(0px);
+				transform: translateX(0px);
+			}
+			.list li {
+				width:25%;
+				height:20.875rem;
+				float:left;
+				list-style: none;
+			}
+			.list img{
+				width:100%;
+				height:20.875rem;
+				border: none;
+				display: block;
+			}
+			.banner .rido{
+				width:10rem;
+				height:3rem;
+				position: absolute;
+				bottom:0;
+				right:0;
+			}
+			.rido a{
+				width:2rem;
+				height:2rem;
+				border-radius:2rem;
+				display: block;
+				float:left;
+				margin:.5rem .5rem 0rem 0rem;
+				background: #FFF;
+			}
+			.rido .active{
+				background:red;
+			}
+			.box{
+				width:100%;
+				height:24rem;
+			}
+			.box li{
+				width:9.9rem;
+				height:11rem;
+			}
+			.box div{
+				width:9rem;
+				height:9rem;
+				text-align: center;
+				margin: 2rem .5rem 0rem .5rem;
+			}
+			.box p{
+				width:5rem;
+				height:2rem;
+				font-size:1.2rem;
+				margin-left: 2rem;
+				color:#535353;
+			}
+			.poht img{
+				width:100%;
+				height:13rem;
+				display: block;
+			}
+			.content1{
+				width:100%;
+				height:17rem;
+				position: relative;
+			}
+			.content1 ul{
+				width:37rem;
+				height:16rem;
+				background:#ffebf7;
+				margin:4rem 0rem 0rem 1.5rem;
+			}
+			.content1 ul li{
+				width:9.1rem;
+				height:14rem;
+				border-left:1px solid #f5daeb;
+				text-align: center;
+				margin-top: 1rem;
+			}
+			.content1 p{
+				width:9rem;
+				height:2.8rem;
+				font-size: 1.5rem;
+				color:#f1325d;
+				margin-top: 1rem;
+			}
+			.content1 h3{
+				font-size:1.7rem;
+				position: absolute;
+				top:-2.7rem;
+				left:16rem;
+			}
+			.content2 h3{
+				font-size:1.7rem;
+				margin: 1.5rem 0rem .5rem 13rem;
+			}
+			.content2 img{
+				width:40rem;
+				height:11rem;
+			}
+			.content3{
+				width:100%;
+				height:9rem;
+				
+			}
+			.content3 div{
+				width:13.2rem;
+				height:9rem;
+				border-left:1px solid #ccc;
+				float: left;
+				position:relative;
+			}
+			.content3 img{
+				width:4rem;
+				height:6.5rem;
+				margin: .5rem;
+			}
+			.cont div{
+				width:100%;
+				height:30rem;
+				border-bottom:2px solid #ccc;
+				box-sizing: border-box;
+				position: relative;
+				
+			}
+			.cont img{
+				width:100%;
+				height:25rem;
+				background-size: cover;
+			}
+			.cont .sp1{
+				width:14rem;
+				height:3rem;
+				display: block;
+				font-size: 2rem;
+				margin:1rem 0rem .5rem 1rem;
+				float: left;
+			}
+			.cont .sp{
+				width:5rem;
+				height:3rem;
+				display: block;
+				position: absolute;
+				bottom:1rem;
+				right: 1rem;
+				font-size:1.7rem;
+				color: #ccc;
+			}
+			.cont .sp2{
+				display: block;
+				width:30rem;
+				height:3rem;
+				font-size: 2rem;
+			}
+			.cont .sp3{
+				display: block;
+				width:30rem;
+				height:3rem;
+				font-size:1.5rem;
+				color: #999;
+			}
+			.cont .sp2 i{
+				color:#f10782;
+			}
+			.foot_top{
+				width:100%;
+				height:24rem;
+			}
+			.foot_top span{
+				display: block;
+				width: 100%;
+				height:9rem;
+				text-align: center;
+				line-height: 9rem;
+				font-size: 1.7rem;
+				color:#686a67;
+			}
+			.foot_top span a{
+				color:#f10782;
+				text-decoration: underline;
+			}
+			.foot_top div{
+				width:9.5rem;
+				height:11rem;
+				border-left:4px solid #cdcdcd;
+				float: left;
+				text-align: center;
+			}
+			.foot_top img{
+				width:5rem;
+				height:5rem;
+				margin-top:1.7rem;
+			}
+			.foot_top p{
+				font-size: 1.5rem;
+				margin-top: .5rem;
+				color:#5f6160;
+			}
+			.foot_bottom{
+				width:100%;
+				height:23rem;
+				background:#f7f7f7;
+			}
+			.foot_bottom span{
+				display: inline-block;
+				width:10rem;
+				height:3rem;
+				color:#5f6160;
+				font-size:2rem;
+				margin:2rem 1rem 0rem 1rem;
+			}
+			.foot_bottom div{
+				float: right;
+				margin-top: 2rem;
+			}
+			.foot_bottom a{
+				color:#5f6160;
+				font-size:2rem;
+			}
+			.foot_bottom p{
+				display: block;
+				width:40rem;
+				height:6.25rem;
+				font-size:1.5rem;
+				color:#d4d4d4;
+				text-align: center;
+				line-height:3rem;
+				margin-top:2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wsp">
+			<div class="header">
+				<span class="left">
+					<img src="img/pic002.png"/>
+				</span>
+				<span class="center">
+					唯品会
+				</span>
+				<span class="right">
+					<img src="img/pic001.png"/>
+				</span>
+			</div>
+			<!------导航栏----->
+			<nav class="nav">
+				<ul>
+					<li style="border: none;"><a href="" style="text-decoration: underline;">首页</a></li>
+					<li><a href="">服饰鞋包</a></li>
+					<li><a href="">美妆</a></li>
+					<li><a href="">家居家电</a></li>
+					<li><a href="">母婴</a></li>
+				</ul>
+			</nav>
+			<!------轮播----->
+			<div class="banner">
+				<ul class="list">
+					<li><img src="img/pic1.jpg"/></li>
+					<li><img src="img/35.jpg"></li>
+					<li><img src="img/49.jpg"></li>
+					<li><img src="img/626.jpg"></li>
+				</ul>
+				<div class="rido"></div>
+			</div>
+			
+			<!------小图片----->
+			<div class="box">
+				<ul>
+					<li>
+						<div>
+							<img src="img/pic4.png" style="width:5.5rem;height:6rem"/>
+							<p style="margin-top: .6rem;">女装馆</p>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/pic5.png"style="width:5.5rem;height:5rem;margin-top: 1rem;"/>
+							<p style="margin-top: .6rem;">美妆馆</p>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/pic6.png"style="width:5.5rem;height:4rem;margin-top: 2rem;"/>
+							<p style="margin-top: .6rem;">鞋靴馆</p>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/pic7.png"style="width:5.5rem;height:6rem"/>
+							<p style="margin-top: .6rem;">箱包馆</p>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/pic8.png"style="width:5rem;height:6.5rem"/>
+							<p style="margin-top: .3rem;">男装馆</p>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/pic9.png"style="width:6.5rem;height:4rem;margin-top: 2rem;"/>
+							<p style="margin-top: .6rem;">运动馆</p>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/pic10.png" style="width:5rem;height:4.5rem;margin-top: 1.3rem;"/>
+							<p style="margin-top: .8rem;">秒杀区</p>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/pic11.png"style="width:4rem;height:3rem;margin-top: 1.5rem;"/>
+							<p style="margin-top: 2.1rem;">更多分类</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!----大图----->
+			<div class="poht">
+				<img src="img/pic2.jpg"/>
+				<img src="img/pic3.jpg"/>
+			</div>
+			
+			<!---内容区---->
+			<div class="content1">
+				<h3>-热销分类-</h3>
+				<ul>
+					<li style="border: none;">
+						<img src="img/pic15.png" style="width:6rem;height:5rem;margin-top:2.5rem;"/>
+						<p>夏日靓鞋</p>
+						<sapn style="width:8rem;height:2.5rem;display: block;background:#ff4982;border-radius:2rem;font-size:1.2rem;color:#fff;line-height: 2.5rem;margin-left:.5rem;">抢先入场</sapn>
+					</li>
+					<li>
+						<img src="img/pic16.png"style="width:5rem;height:7rem;margin-top:.3rem;"/>
+						<p>洗衣液</p>
+						<sapn style="width:8rem;height:2.5rem;display: block;background:#ff4982;border-radius:2rem;font-size:1.2rem;color:#fff;line-height: 2.5rem;margin-left:.5rem;">抢先入场</sapn>
+					</li>
+					<li>
+						<img src="img/pic18.png"style="width:5rem;height:7rem;margin-top:.3rem;"/>
+						<p>文胸</p>
+						<sapn style="width:8rem;height:2.5rem;display: block;background:#ff4982;border-radius:2rem;font-size:1.2rem;color:#fff;line-height: 2.5rem;margin-left:.5rem;">抢先入场</sapn>
+					</li>
+					<li>
+						<img src="img/pic19.png"style="width:4rem;height:7rem;margin-top:.3rem;"/>
+						<p>洗发水</p>
+						<sapn style="width:8rem;height:2.5rem;display: block;background:#ff4982;border-radius:2rem;font-size:1.2rem;color:#fff;line-height: 2.5rem;margin-left:.5rem;">抢先入场</sapn>
+					</li>
+				</ul>
+			</div>
+			<span style="width: 100%;height:1rem;background:#f8f3f7;display: block;"></span>
+			<div class="content2">
+				<h3>-新人专属小幸运-</h3>
+				<img src="img/pic004.png"/>
+			</div>
+			<span style="width: 100%;height:1rem;background:#f8f3f7;display: block;"></span>
+			<div class="content3">
+				<div style="border: none;">
+					<img src="img/pic14.png"/>
+					<span style="position: absolute;top:2rem;left:5rem;font-size:1.6rem;color:#74b5ff;">好物.签到</span><br/>
+					<span style="position: absolute;top:4.5rem;left:5rem;font-size:1.2rem;">签到送10元劵</span>
+				</div>
+				<div>
+					<img src="img/pic17.png"/>
+					<span style="position: absolute;top:2rem;left:5rem;font-size:1.6rem;color:#fe6466;">1元得宝</span><br/>
+					<span style="position: absolute;top:4.5rem;left:5rem;font-size:1.2rem;">抢Phone7plus</span>
+				</div>
+				<div>
+					<img src="img/pic13.png"/>
+					<span style="position: absolute;top:2rem;left:5rem;font-size:1.6rem;color:#fe6466;">0元领</span><br/>
+					<span style="position: absolute;top:4.5rem;left:5rem;font-size:1.2rem;">18日20 点开抢</span>
+				</div>
+			</div>
+			<span style="width: 100%;height:1rem;background:#f8f3f7;display: block;"></span>
+			<div style="width:100%;height:5rem;font-size:1.7rem;text-align: center;line-height: 5rem;">今日特卖.每天早上10点  晚上8点上新</div>
+			
+			<!----cont----->
+			<div class="cont">
+				<div>
+					<img src="img/pic20.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div style="width:100%;height:32rem;">
+					<img src="img/pic21.jpg"/>
+					<span class="sp3">购物即将享受8.5折上折优惠</span>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic90.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic91.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div style="width:100%;height:32rem;">
+					<img src="img/pic92.jpg"/>
+					<span class="sp3">购物即将享受8.5折上折优惠</span>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic93.jpg"/>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic94.jpg"/>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div style="width:100%;height:32rem;">
+					<img src="img/pic95.jpg"/>
+					<span class="sp3">购物即将享受8.5折上折优惠</span>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic96.jpg"/>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic97.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic98.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div style="width:100%;height:32rem;">
+					<img src="img/pic99.jpg"/>
+					<span class="sp3">购物即将享受优惠</span>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic100.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				
+				<div>
+					<img src="img/pic110.jpg"/>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic111.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div style="width:100%;height:32rem;">
+					<img src="img/pic112.jpg"/>
+					<span class="sp3">8.5折上折优惠</span>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic113.jpg"/>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div style="width:100%;height:32rem;">
+					<img src="img/pic114.jpg"/>
+					<span class="sp3">购物即将享受8.5折上折优惠</span>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic115.jpg"/>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div style="width:100%;height:32rem;">
+					<img src="img/pic116.jpg"/>
+					<span class="sp3">购物即将享受8.5折上折优惠</span>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic117.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic118.jpg"/>
+					<span class="sp2"><i>1.6折起</i>音儿YINGER女装专场</span><span class="sp">剩2天</span>
+				</div>
+				<div>
+					<img src="img/pic119.jpg"/>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+				<div style="width:100%;height:32rem;">
+					<img src="img/pic120.jpg"/>
+					<span class="sp3">购物即将享受8.5折上折优惠</span>
+					<span class="sp1">鞋包爽购风暴</span><span class="sp">剩2天</span>
+				</div>
+			</div>
+			<!------foot----->
+			<div class="foot">
+				<div class="foot_top">
+					<span><a href="">点击</a>查看更多在售品牌</span>
+					<div style="border: none;">
+						<img src="img/pic22.png"/>
+						<p>即将上线</p>
+					</div>
+					<div>
+						<img src="img/pic23.png"/>
+						<p>唯品团购</p>
+					</div>
+					<div>
+						<img src="img/pic24.png"/>
+						<p>正品保证</p>
+					</div>
+					<div>
+						<img src="img/pic26.png"/>
+						<p>唯品客服</p>
+					</div>
+				</div>
+				
+				<div class="foot_bottom">
+					<span>唯品会首页</span>
+					<span>关于我们</span>
+					<div>
+						<a href="">登录&nbsp;|</a>
+						<a href="">&nbsp;注册</a>
+					</div>
+					<p>Copyright@2008-2017m.vip.com,All Rights Reserved粤ICP备08114786号</p>
+					<p>粤公网安备44010302000068</p>
+				</div>
+			</div>
+			<img src="img/buy.png" style="position: fixed;top:30rem;width:8rem;height:8rem;"/>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var html = document.getElementsByTagName('html')[0];
+	var iW = window.innerWidth;
+	var i = iW/40;
+	console.log(i)
+	html.style.fontSize = i + 'px';
+	
+	
+		document.addEventListener('touchend',function(ev){
+			ev.preventDefault();
+		})
+			
+		var list = document.querySelector('.list');
+		var rido = document.querySelector('.rido');
+		var lis = list.querySelectorAll('li');
+		var len = lis.length;
+		var iW = window.innerWidth;
+		var num = 0;
+		var now = null;
+		setList();
+		for(var i=0;i<len;i++){
+				if(i==0){
+					rido.innerHTML += '<a href="javascript:;" class="active"></a>';
+				}else{
+					rido.innerHTML += '<a href="javascript:;"></a>';
+				}
+			}
+		
+			swipe(list,'left',fnLeft);
+			
+			function fnLeft(){
+				if(num==0){
+					list.style.transition = 'none';
+					list.style.transform = list.style.webkitTransform = 'translateX(-'+len*iW+'px)';
+					num = len;
+					setTimeout(function(){
+						list.style.transition = '1s';
+						num++;
+						list.style.transform = list.style.webkitTransform = 'translateX(-'+num*iW+'px)';
+						now = num%len;
+						setA(now);
+					},15)
+				}else if(num == 2*len-1){
+					list.style.transition = 'none';
+					list.style.transform = list.style.webkitTransform = 'translateX(-'+(len-1)*iW+'px)';
+					num=len-1;	
+					setTimeout(function(){
+						list.style.transition = '1s';
+						num++;
+						now = num%len;
+						setA(now);
+						list.style.transform = list.style.webkitTransform = 'translateX(-'+num*iW+'px)';
+					},15)
+				}else{
+					num++;
+					now = num%len;
+					setA(now);
+					list.style.transition = '1s';
+					list.style.transform = list.style.webkitTransform = 'translateX(-'+num*iW+'px)';
+				}
+			}
+			
+			//添加li
+			function setList(){
+				list.innerHTML += list.innerHTML;//复制
+				var lis = list.querySelectorAll('li');
+				list.style.width = lis.length*iW + 'px';
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.width = iW + 'px';
+				}
+			}
+			
+			//设置背景
+			function setA(index){
+				var aA = rido.querySelectorAll('a');
+				for(var i=0;i<aA.length;i++){
+					aA[i].className = '';
+				}
+				aA[index].className = 'active';
+			}
+</script>
